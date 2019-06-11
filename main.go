@@ -1,13 +1,27 @@
+
 package main
+
 import (
+	"github.com/gorilla/mux"
+	"go-contacts/app"
+	"os"
 	"fmt"
-	"html"
-	"log"
 	"net/http"
 )
+
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-	})
-	log.Fatal(http.ListenAndServe(":3000", nil))
+
+	router := mux.NewRouter()
+	router.Use(app.JwtAuthentication) 
+	port := os.Getenv("PORT") 
+	if port == "" {
+		port = "8000" 
+	}
+
+	fmt.Println(port)
+
+	err := http.ListenAndServe(":" + port, router) 
+	if err != nil {
+		fmt.Print(err)
+	}
 }
