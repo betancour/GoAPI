@@ -4,4 +4,4 @@
 
 ## License
 
-This project is unLicense - see the [LICENSE.md](LICENSE.md) file for details
+This project is unLicense - see the [LICENSE.md](LICENSE) file for details
