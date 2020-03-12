@@ -12,15 +12,15 @@ import (
 func main() {
 
 	router := mux.NewRouter()
-	router.Use(app.JwtAuthentication) 
-	port := os.Getenv("PORT") 
+	router.Use(app.JwtAuthentication)
+	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8000" 
+		port = "8000"
 	}
 
 	fmt.Println(port)
 
-	err := http.ListenAndServe(":" + port, router) 
+	err := http.ListenAndServe(":" + port, router)
 	if err != nil {
 		fmt.Print(err)
 	}

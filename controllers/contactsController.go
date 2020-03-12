@@ -35,7 +35,7 @@ var GetContactsFor = func(w http.ResponseWriter, r *http.Request) {
 		u.Respond(w, u.Message(false, "There was an error in your request"))
 		return
 	}
-	
+
 	data := models.GetContacts(uint(id))
 	resp := u.Message(true, "success")
 	resp["data"] = data
